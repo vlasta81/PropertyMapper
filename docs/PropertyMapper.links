@@ -1,0 +1,144 @@
+https://github.com/vlasta81/PropertyMapper/blob/master/docs/api/
+M:PropertyMapper.IPropMap.Map``2(``0)|IPropMap.Map.E20R7VPPFAQ8M6MVCPC05Q9EB.md|Map<TIn,TOut>(TIn)
+M:PropertyMapper.IPropMap.MapOrDefault``2(``0)|IPropMap.MapOrDefault.I7NGZZCD4LEJCNL5CJ3F628B2.md|MapOrDefault<TIn,TOut>(TIn)
+M:PropertyMapper.IPropMap.TryMap``2(``0,``1@)|IPropMap.TryMap.BP3Z0W5CXEK18JEHIFADZX2HC.md|TryMap<TIn,TOut>(TIn, TOut)
+M:PropertyMapper.IPropMap.MapOrElse``2(``0,``1)|IPropMap.MapOrElse.md#PropertyMapper.IPropMap.MapOrElse_TIn,TOut_(TIn,TOut)|MapOrElse<TIn,TOut>(TIn, TOut)
+M:PropertyMapper.IPropMap.MapOrElse``2(``0,System.Func{``1})|IPropMap.MapOrElse.md#PropertyMapper.IPropMap.MapOrElse_TIn,TOut_(TIn,System.Func_TOut_)|MapOrElse<TIn,TOut>(TIn, Func<TOut>)
+M:PropertyMapper.IPropMap.MapThenApplyMask``2(``0,PropertyMapper.Masking.IFieldMask{``1})|IPropMap.MapThenApplyMask.ACKN4X1ULBVMQP8ZU967K3OB9.md|MapThenApplyMask<TIn,TOut>(TIn, IFieldMask<TOut>)
+M:PropertyMapper.IPropMap.MapBatch``2(System.ReadOnlySpan{``0})|IPropMap.MapBatch.BQFZ297YMDXZOORD45EH6C2W2.md|MapBatch<TIn,TOut>(ReadOnlySpan<TIn>)
+M:PropertyMapper.IPropMap.MapBatchInPlace``2(System.ReadOnlySpan{``0},System.Span{``1})|IPropMap.MapBatchInPlace.NXHP3DGQUK9IC5CRDO8KMRZ92.md|MapBatchInPlace<TIn,TOut>(ReadOnlySpan<TIn>, Span<TOut>)
+M:PropertyMapper.IPropMap.MapInto``2(``0,``1)|IPropMap.MapInto.1GNMZ6G7IXTTOW9TYA6PXCCR6.md|MapInto<TIn,TOut>(TIn, TOut)
+M:PropertyMapper.IPropMap.MapMerge``3(``0,``1)|IPropMap.MapMerge.5D1O1EJD929I89KUDDAKTQ07A.md|MapMerge<TIn1,TIn2,TOut>(TIn1, TIn2)
+M:PropertyMapper.IPropMap.Clone``1(``0)|IPropMap.Clone.CULQQ6W6IYZ54RRLMCRLZI9FE.md|Clone<T>(T)
+M:PropertyMapper.IPropMap.MapAsync``2(``0,System.Threading.CancellationToken)|IPropMap.MapAsync.md#PropertyMapper.IPropMap.MapAsync_TIn,TOut_(TIn,System.Threading.CancellationToken)|MapAsync<TIn,TOut>(TIn, CancellationToken)
+M:PropertyMapper.IPropMap.MapAsync``2(System.Collections.Generic.IEnumerable{``0},System.Threading.CancellationToken)|IPropMap.MapAsync.md#PropertyMapper.IPropMap.MapAsync_TIn,TOut_(System.Collections.Generic.IEnumerable_TIn_,System.Threading.CancellationToken)|MapAsync<TIn,TOut>(IEnumerable<TIn>, CancellationToken)
+M:PropertyMapper.IPropMap.MapParallelAsync``2(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Threading.CancellationToken)|IPropMap.MapParallelAsync.DH6CGTKDT4RBJG69O8FHPIFSE.md|MapParallelAsync<TIn,TOut>(IEnumerable<TIn>, int, CancellationToken)
+M:PropertyMapper.IPropMap.MapStreamAsync``2(System.Collections.Generic.IAsyncEnumerable{``0},System.Threading.CancellationToken)|IPropMap.MapStreamAsync.BGRGFBMTUJZ0RLX4Z1SIDAHV9.md|MapStreamAsync<TIn,TOut>(IAsyncEnumerable<TIn>, CancellationToken)
+M:PropertyMapper.IPropMap.MapStreamBatchedAsync``2(System.Collections.Generic.IAsyncEnumerable{``0},System.Int32,System.Threading.CancellationToken)|IPropMap.MapStreamBatchedAsync.7EIMDTPPGA30NU3Y8APH8BQO2.md|MapStreamBatchedAsync<TIn,TOut>(IAsyncEnumerable<TIn>, int, CancellationToken)
+M:PropertyMapper.IPropMap.MapCollection``3(System.Collections.Generic.IEnumerable{``0})|IPropMap.MapCollection.md#PropertyMapper.IPropMap.MapCollection_TIn,TOut,TOutCollection_(System.Collections.Generic.IEnumerable_TIn_)|MapCollection<TIn,TOut,TOutCollection>(IEnumerable<TIn>)
+M:PropertyMapper.IPropMap.MapCollection``2(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.ICollection{``1})|IPropMap.MapCollection.md#PropertyMapper.IPropMap.MapCollection_TIn,TOut_(System.Collections.Generic.IEnumerable_TIn_,System.Collections.Generic.ICollection_TOut_)|MapCollection<TIn,TOut>(IEnumerable<TIn>, ICollection<TOut>)
+M:PropertyMapper.IPropMap.MapArray``2(``0[])|IPropMap.MapArray.K3LCUGLWU7CILQBIIHJVKQIOA.md|MapArray<TIn,TOut>(TIn[])
+M:PropertyMapper.IPropMap.MapDictionary``4(System.Collections.Generic.Dictionary{``0,``1})|IPropMap.MapDictionary.4AGFM5RKUMIC0T2U85ZS0NQH2.md|MapDictionary<TInKey,TInValue,TOutKey,TOutValue>(Dictionary<TInKey,TInValue>)
+M:PropertyMapper.IPropMap.MapToFrozenDictionary``4(System.Collections.Generic.Dictionary{``0,``1})|IPropMap.MapToFrozenDictionary.X1OO2OVUAKVKUTKEKOC7B6V52.md|MapToFrozenDictionary<TInKey,TInValue,TOutKey,TOutValue>(Dictionary<TInKey,TInValue>)
+M:PropertyMapper.IPropMap.MapToList``2(System.Collections.Generic.IEnumerable{``0})|IPropMap.MapToList.md#PropertyMapper.IPropMap.MapToList_TIn,TOut_(System.Collections.Generic.IEnumerable_TIn_)|MapToList<TIn,TOut>(IEnumerable<TIn>)
+M:PropertyMapper.IPropMap.MapToList``2(System.ReadOnlySpan{``0})|IPropMap.MapToList.md#PropertyMapper.IPropMap.MapToList_TIn,TOut_(System.ReadOnlySpan_TIn_)|MapToList<TIn,TOut>(ReadOnlySpan<TIn>)
+M:PropertyMapper.IPropMap.MapToArray``2(System.Collections.Generic.IEnumerable{``0})|IPropMap.MapToArray.91SWCL48BPIQLWT57AX49S2QB.md|MapToArray<TIn,TOut>(IEnumerable<TIn>)
+M:PropertyMapper.IPropMap.MapToHashSet``2(System.Collections.Generic.IEnumerable{``0})|IPropMap.MapToHashSet.SNHMC6BFUM100SQRXZGHG2H42.md|MapToHashSet<TIn,TOut>(IEnumerable<TIn>)
+M:PropertyMapper.IPropMap.MapNestedList``2(System.Collections.Generic.IEnumerable{System.Collections.Generic.IEnumerable{``0}})|IPropMap.MapNestedList.WOODYGK46R8V3HBZDEQZIAVV2.md|MapNestedList<TIn,TOut>(IEnumerable<IEnumerable<TIn>>)
+M:PropertyMapper.IPropMap.MapToImmutableArray``2(System.Collections.Generic.IEnumerable{``0})|IPropMap.MapToImmutableArray.JV3UTFAM92WTCEHMQ15YUXHU9.md|MapToImmutableArray<TIn,TOut>(IEnumerable<TIn>)
+M:PropertyMapper.IPropMap.MapToImmutableList``2(System.Collections.Generic.IEnumerable{``0})|IPropMap.MapToImmutableList.6LG0MDZORIUCXF82JMIA4J7L1.md|MapToImmutableList<TIn,TOut>(IEnumerable<TIn>)
+M:PropertyMapper.IPropMap.MapWithContext``3(``0,``2)|IPropMap.MapWithContext.ZAZNFIIL8IY6FN1GBCB9D90KD.md|MapWithContext<TIn,TOut,TCtx>(TIn, TCtx)
+M:PropertyMapper.IPropMap.Warmup``2|IPropMap.Warmup_TIn,TOut_().md|Warmup<TIn,TOut>()
+M:PropertyMapper.IPropMap.WarmupBatch(System.Type[])|IPropMap.WarmupBatch.XQ5QTATFW4U6433XBP0D1DD2.md|WarmupBatch(Type[])
+M:PropertyMapper.IPropMap.GetStatistics|IPropMap.GetStatistics().md|GetStatistics()
+M:PropertyMapper.IPropMap.Validate``2|IPropMap.Validate_TIn,TOut_().md|Validate<TIn,TOut>()
+M:PropertyMapper.IPropMap.GetProjectionExpression``2|IPropMap.GetProjectionExpression.md#PropertyMapper.IPropMap.GetProjectionExpression_TIn,TOut_()|GetProjectionExpression<TIn,TOut>()
+M:PropertyMapper.IPropMap.Project``2(System.Linq.IQueryable{``0})|IPropMap.Project.md#PropertyMapper.IPropMap.Project_TIn,TOut_(System.Linq.IQueryable_TIn_)|Project<TIn,TOut>(IQueryable<TIn>)
+M:PropertyMapper.IPropMap.GetProjectionExpression``2(PropertyMapper.Masking.IFieldMask{``1})|IPropMap.GetProjectionExpression.md#PropertyMapper.IPropMap.GetProjectionExpression_TIn,TOut_(PropertyMapper.Masking.IFieldMask_TOut_)|GetProjectionExpression<TIn,TOut>(IFieldMask<TOut>)
+M:PropertyMapper.IPropMap.Project``2(System.Linq.IQueryable{``0},PropertyMapper.Masking.IFieldMask{``1})|IPropMap.Project.md#PropertyMapper.IPropMap.Project_TIn,TOut_(System.Linq.IQueryable_TIn_,PropertyMapper.Masking.IFieldMask_TOut_)|Project<TIn,TOut>(IQueryable<TIn>, IFieldMask<TOut>)
+N:PropertyMapper|PropertyMapper.md|PropertyMapper
+T:PropertyMapper.IPropMap|IPropMap.md|IPropMap
+P:PropertyMapper.MappingStatistics.CachedMappers|MappingStatistics.CachedMappers.md|CachedMappers
+P:PropertyMapper.MappingStatistics.CachedPlans|MappingStatistics.CachedPlans.md|CachedPlans
+P:PropertyMapper.MappingStatistics.TotalMemoryBytes|MappingStatistics.TotalMemoryBytes.md|TotalMemoryBytes
+M:PropertyMapper.MappingStatistics.#ctor(System.Int32,System.Int32,System.Int64)|MappingStatistics..ctor.UA3BVD3EV7TW086XRNOMWOKJ4.md|MappingStatistics(int, int, long)
+T:PropertyMapper.MappingStatistics|MappingStatistics.md|MappingStatistics
+P:PropertyMapper.MappingValidationResult.IsValid|MappingValidationResult.IsValid.md|IsValid
+P:PropertyMapper.MappingValidationResult.UnmappedTargetProperties|MappingValidationResult.UnmappedTargetProperties.md|UnmappedTargetProperties
+M:PropertyMapper.MappingValidationResult.#ctor(System.Boolean,System.String[])|MappingValidationResult..ctor.Z43LCYNN25C2O0BGJJHURPR14.md|MappingValidationResult(bool, string[])
+T:PropertyMapper.MappingValidationResult|MappingValidationResult.md|MappingValidationResult
+M:PropertyMapper.PropMap.MapAsync``2(``0,System.Threading.CancellationToken)|PropMap.MapAsync.md#PropertyMapper.PropMap.MapAsync_TIn,TOut_(TIn,System.Threading.CancellationToken)|MapAsync<TIn,TOut>(TIn, CancellationToken)
+M:PropertyMapper.PropMap.MapAsync``2(System.Collections.Generic.IEnumerable{``0},System.Threading.CancellationToken)|PropMap.MapAsync.md#PropertyMapper.PropMap.MapAsync_TIn,TOut_(System.Collections.Generic.IEnumerable_TIn_,System.Threading.CancellationToken)|MapAsync<TIn,TOut>(IEnumerable<TIn>, CancellationToken)
+M:PropertyMapper.PropMap.MapParallelAsync``2(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Threading.CancellationToken)|PropMap.MapParallelAsync.YKYTUOOTNCKCMTRPDGAVEH3B1.md|MapParallelAsync<TIn,TOut>(IEnumerable<TIn>, int, CancellationToken)
+M:PropertyMapper.PropMap.MapStreamAsync``2(System.Collections.Generic.IAsyncEnumerable{``0},System.Threading.CancellationToken)|PropMap.MapStreamAsync.G8NVOBKEVAFQYVRA0UCY309RD.md|MapStreamAsync<TIn,TOut>(IAsyncEnumerable<TIn>, CancellationToken)
+M:PropertyMapper.PropMap.MapStreamBatchedAsync``2(System.Collections.Generic.IAsyncEnumerable{``0},System.Int32,System.Threading.CancellationToken)|PropMap.MapStreamBatchedAsync.6CGECNXA50JHE344LK7ZCUAZ8.md|MapStreamBatchedAsync<TIn,TOut>(IAsyncEnumerable<TIn>, int, CancellationToken)
+M:PropertyMapper.PropMap.MapCollection``3(System.Collections.Generic.IEnumerable{``0})|PropMap.MapCollection.md#PropertyMapper.PropMap.MapCollection_TIn,TOut,TOutCollection_(System.Collections.Generic.IEnumerable_TIn_)|MapCollection<TIn,TOut,TOutCollection>(IEnumerable<TIn>)
+M:PropertyMapper.PropMap.MapCollection``2(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.ICollection{``1})|PropMap.MapCollection.md#PropertyMapper.PropMap.MapCollection_TIn,TOut_(System.Collections.Generic.IEnumerable_TIn_,System.Collections.Generic.ICollection_TOut_)|MapCollection<TIn,TOut>(IEnumerable<TIn>, ICollection<TOut>)
+M:PropertyMapper.PropMap.MapArray``2(``0[])|PropMap.MapArray.EGLUD1YPVGIBFI87KS3QVP6U8.md|MapArray<TIn,TOut>(TIn[])
+M:PropertyMapper.PropMap.MapDictionary``4(System.Collections.Generic.Dictionary{``0,``1})|PropMap.MapDictionary.RHXKN9BDH2AYXGV07P5MKV1ZA.md|MapDictionary<TInKey,TInValue,TOutKey,TOutValue>(Dictionary<TInKey,TInValue>)
+M:PropertyMapper.PropMap.MapToFrozenDictionary``4(System.Collections.Generic.Dictionary{``0,``1})|PropMap.MapToFrozenDictionary.L8F9AUFY7FVXWNXSMBV90FJBA.md|MapToFrozenDictionary<TInKey,TInValue,TOutKey,TOutValue>(Dictionary<TInKey,TInValue>)
+M:PropertyMapper.PropMap.MapToList``2(System.Collections.Generic.IEnumerable{``0})|PropMap.MapToList.md#PropertyMapper.PropMap.MapToList_TIn,TOut_(System.Collections.Generic.IEnumerable_TIn_)|MapToList<TIn,TOut>(IEnumerable<TIn>)
+M:PropertyMapper.PropMap.MapToList``2(System.ReadOnlySpan{``0})|PropMap.MapToList.md#PropertyMapper.PropMap.MapToList_TIn,TOut_(System.ReadOnlySpan_TIn_)|MapToList<TIn,TOut>(ReadOnlySpan<TIn>)
+M:PropertyMapper.PropMap.MapToArray``2(System.Collections.Generic.IEnumerable{``0})|PropMap.MapToArray.7HWNWPH5PR9SJS1O2ZGLJIQ38.md|MapToArray<TIn,TOut>(IEnumerable<TIn>)
+M:PropertyMapper.PropMap.MapToHashSet``2(System.Collections.Generic.IEnumerable{``0})|PropMap.MapToHashSet.ED9S80O5C0IXQ7YINOANZSG57.md|MapToHashSet<TIn,TOut>(IEnumerable<TIn>)
+M:PropertyMapper.PropMap.MapNestedList``2(System.Collections.Generic.IEnumerable{System.Collections.Generic.IEnumerable{``0}})|PropMap.MapNestedList.E6BFIQ8CJN60XBVWYGFA82DSB.md|MapNestedList<TIn,TOut>(IEnumerable<IEnumerable<TIn>>)
+M:PropertyMapper.PropMap.MapToImmutableArray``2(System.Collections.Generic.IEnumerable{``0})|PropMap.MapToImmutableArray.FQOXY8LYLUJ67T7QSDBYSMDB7.md|MapToImmutableArray<TIn,TOut>(IEnumerable<TIn>)
+M:PropertyMapper.PropMap.MapToImmutableList``2(System.Collections.Generic.IEnumerable{``0})|PropMap.MapToImmutableList.6OR8KU5HGMOTME9S3QOZSSNLB.md|MapToImmutableList<TIn,TOut>(IEnumerable<TIn>)
+M:PropertyMapper.PropMap.MapWithContext``3(``0,``2)|PropMap.MapWithContext.VBYRHLVUYW6CLL935CECSDD7A.md|MapWithContext<TIn,TOut,TCtx>(TIn, TCtx)
+M:PropertyMapper.PropMap.Map``2(``0)|PropMap.Map.GHQD3IQP9BO7WZYKLBLGJIYSE.md|Map<TIn,TOut>(TIn)
+M:PropertyMapper.PropMap.Clear|PropMap.Clear().md|Clear()
+M:PropertyMapper.PropMap.MapBatch``2(System.ReadOnlySpan{``0})|PropMap.MapBatch.AAPNY1A78JL9AD0VK3C7TBLPA.md|MapBatch<TIn,TOut>(ReadOnlySpan<TIn>)
+M:PropertyMapper.PropMap.MapBatchInPlace``2(System.ReadOnlySpan{``0},System.Span{``1})|PropMap.MapBatchInPlace.O3WTCWYM7MWL6OG084FR3WAFE.md|MapBatchInPlace<TIn,TOut>(ReadOnlySpan<TIn>, Span<TOut>)
+M:PropertyMapper.PropMap.#ctor|PropMap.PropMap.md#PropertyMapper.PropMap.PropMap()|PropMap()
+M:PropertyMapper.PropMap.#ctor(PropertyMapper.Configuration.PropMapConfiguration)|PropMap.PropMap.md#PropertyMapper.PropMap.PropMap(PropertyMapper.Configuration.PropMapConfiguration)|PropMap(PropMapConfiguration)
+M:PropertyMapper.PropMap.Warmup``2|PropMap.Warmup_TIn,TOut_().md|Warmup<TIn,TOut>()
+M:PropertyMapper.PropMap.WarmupBatch(System.Type[])|PropMap.WarmupBatch.G8U901V5CV76SI3XPQ8A9C5H7.md|WarmupBatch(Type[])
+M:PropertyMapper.PropMap.GetStatistics|PropMap.GetStatistics().md|GetStatistics()
+M:PropertyMapper.PropMap.Validate``2|PropMap.Validate_TIn,TOut_().md|Validate<TIn,TOut>()
+M:PropertyMapper.PropMap.MapInto``2(``0,``1)|PropMap.MapInto.69NPT4STBN7RN0U6Y3O3R6F2E.md|MapInto<TIn,TOut>(TIn, TOut)
+M:PropertyMapper.PropMap.MapMerge``3(``0,``1)|PropMap.MapMerge.NJ8VPGZ780QF4SUTJ3SX3XTB1.md|MapMerge<TIn1,TIn2,TOut>(TIn1, TIn2)
+M:PropertyMapper.PropMap.Clone``1(``0)|PropMap.Clone.EFQITBIZ24A837MBN4YES00BD.md|Clone<T>(T)
+M:PropertyMapper.PropMap.MapOrDefault``2(``0)|PropMap.MapOrDefault.GEQP1RB6LH2TF6OTXUNMGQ3H6.md|MapOrDefault<TIn,TOut>(TIn)
+M:PropertyMapper.PropMap.TryMap``2(``0,``1@)|PropMap.TryMap.FDQX4ISJGHQ523XWTI0O14OV2.md|TryMap<TIn,TOut>(TIn, TOut)
+M:PropertyMapper.PropMap.MapOrElse``2(``0,``1)|PropMap.MapOrElse.md#PropertyMapper.PropMap.MapOrElse_TIn,TOut_(TIn,TOut)|MapOrElse<TIn,TOut>(TIn, TOut)
+M:PropertyMapper.PropMap.MapOrElse``2(``0,System.Func{``1})|PropMap.MapOrElse.md#PropertyMapper.PropMap.MapOrElse_TIn,TOut_(TIn,System.Func_TOut_)|MapOrElse<TIn,TOut>(TIn, Func<TOut>)
+M:PropertyMapper.PropMap.MapThenApplyMask``2(``0,PropertyMapper.Masking.IFieldMask{``1})|PropMap.MapThenApplyMask.MUC09OC030SY5KUWU0OU4JU0F.md|MapThenApplyMask<TIn,TOut>(TIn, IFieldMask<TOut>)
+M:PropertyMapper.PropMap.GetProjectionExpression``2|PropMap.GetProjectionExpression.md#PropertyMapper.PropMap.GetProjectionExpression_TIn,TOut_()|GetProjectionExpression<TIn,TOut>()
+M:PropertyMapper.PropMap.Project``2(System.Linq.IQueryable{``0})|PropMap.Project.md#PropertyMapper.PropMap.Project_TIn,TOut_(System.Linq.IQueryable_TIn_)|Project<TIn,TOut>(IQueryable<TIn>)
+M:PropertyMapper.PropMap.GetProjectionExpression``2(PropertyMapper.Masking.IFieldMask{``1})|PropMap.GetProjectionExpression.md#PropertyMapper.PropMap.GetProjectionExpression_TIn,TOut_(PropertyMapper.Masking.IFieldMask_TOut_)|GetProjectionExpression<TIn,TOut>(IFieldMask<TOut>)
+M:PropertyMapper.PropMap.Project``2(System.Linq.IQueryable{``0},PropertyMapper.Masking.IFieldMask{``1})|PropMap.Project.md#PropertyMapper.PropMap.Project_TIn,TOut_(System.Linq.IQueryable_TIn_,PropertyMapper.Masking.IFieldMask_TOut_)|Project<TIn,TOut>(IQueryable<TIn>, IFieldMask<TOut>)
+T:PropertyMapper.PropMap|PropMap.md|PropMap
+P:PropertyMapper.Masking.IFieldMask`1.ExcludedFields|IFieldMask_T_.ExcludedFields.md|ExcludedFields
+N:PropertyMapper.Masking|PropertyMapper.Masking.md|PropertyMapper.Masking
+T:PropertyMapper.Masking.IFieldMask`1|IFieldMask_T_.md|IFieldMask<T>
+P:PropertyMapper.Masking.FieldMask`1.ExcludedFields|FieldMask_T_.ExcludedFields.md|ExcludedFields
+M:PropertyMapper.Masking.FieldMask`1.#ctor(System.String[])|FieldMask_T_..ctor.AI6VFKG77KXARTSBPJRG4ARAA.md|FieldMask(string[])
+M:PropertyMapper.Masking.FieldMask`1.Apply(`0)|FieldMask_T_.Apply.37DHLYYG9Q219NSKEFD97N989.md|Apply(T)
+T:PropertyMapper.Masking.FieldMask`1|FieldMask_T_.md|FieldMask<T>
+M:PropertyMapper.Extensions.ServiceCollectionExtensions.AddPropertyMapper(Microsoft.Extensions.DependencyInjection.IServiceCollection)|ServiceCollectionExtensions.AddPropertyMapper.md#PropertyMapper.Extensions.ServiceCollectionExtensions.AddPropertyMapper(thisMicrosoft.Extensions.DependencyInjection.IServiceCollection)|AddPropertyMapper(this IServiceCollection)
+M:PropertyMapper.Extensions.ServiceCollectionExtensions.AddPropertyMapper(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Func{PropertyMapper.Configuration.PropMapConfiguration,PropertyMapper.Configuration.PropMapConfiguration})|ServiceCollectionExtensions.AddPropertyMapper.md#PropertyMapper.Extensions.ServiceCollectionExtensions.AddPropertyMapper(thisMicrosoft.Extensions.DependencyInjection.IServiceCollection,System.Func_PropertyMapper.Configuration.PropMapConfiguration,PropertyMapper.Configuration.PropMapConfiguration_)|AddPropertyMapper(this IServiceCollection, Func<PropMapConfiguration,PropMapConfiguration>)
+M:PropertyMapper.Extensions.ServiceCollectionExtensions.AddPropertyMapper(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{PropertyMapper.Configuration.PropMapBuilder})|ServiceCollectionExtensions.AddPropertyMapper.md#PropertyMapper.Extensions.ServiceCollectionExtensions.AddPropertyMapper(thisMicrosoft.Extensions.DependencyInjection.IServiceCollection,System.Action_PropertyMapper.Configuration.PropMapBuilder_)|AddPropertyMapper(this IServiceCollection, Action<PropMapBuilder>)
+M:PropertyMapper.Extensions.ServiceCollectionExtensions.AddPropertyMapper(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Func{PropertyMapper.Configuration.PropMapConfiguration,PropertyMapper.Configuration.PropMapConfiguration},System.Type[])|ServiceCollectionExtensions.AddPropertyMapper.md#PropertyMapper.Extensions.ServiceCollectionExtensions.AddPropertyMapper(thisMicrosoft.Extensions.DependencyInjection.IServiceCollection,System.Func_PropertyMapper.Configuration.PropMapConfiguration,PropertyMapper.Configuration.PropMapConfiguration_,System.Type[])|AddPropertyMapper(this IServiceCollection, Func<PropMapConfiguration,PropMapConfiguration>, Type[])
+M:PropertyMapper.Extensions.ServiceCollectionExtensions.AddPropertyMapper(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{PropertyMapper.Configuration.PropMapBuilder},System.Type[])|ServiceCollectionExtensions.AddPropertyMapper.md#PropertyMapper.Extensions.ServiceCollectionExtensions.AddPropertyMapper(thisMicrosoft.Extensions.DependencyInjection.IServiceCollection,System.Action_PropertyMapper.Configuration.PropMapBuilder_,System.Type[])|AddPropertyMapper(this IServiceCollection, Action<PropMapBuilder>, Type[])
+M:PropertyMapper.Extensions.ServiceCollectionExtensions.AddScopedFieldMask``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Func{System.IServiceProvider,PropertyMapper.Masking.FieldMask{``0}})|ServiceCollectionExtensions.AddScopedFieldMask.md#PropertyMapper.Extensions.ServiceCollectionExtensions.AddScopedFieldMask_T_(thisMicrosoft.Extensions.DependencyInjection.IServiceCollection,System.Func_System.IServiceProvider,PropertyMapper.Masking.FieldMask_T__)|AddScopedFieldMask<T>(this IServiceCollection, Func<IServiceProvider,FieldMask<T>>)
+M:PropertyMapper.Extensions.ServiceCollectionExtensions.AddScopedFieldMask``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String[])|ServiceCollectionExtensions.AddScopedFieldMask.md#PropertyMapper.Extensions.ServiceCollectionExtensions.AddScopedFieldMask_T_(thisMicrosoft.Extensions.DependencyInjection.IServiceCollection,string[])|AddScopedFieldMask<T>(this IServiceCollection, string[])
+N:PropertyMapper.Extensions|PropertyMapper.Extensions.md|PropertyMapper.Extensions
+T:PropertyMapper.Extensions.ServiceCollectionExtensions|ServiceCollectionExtensions.md|ServiceCollectionExtensions
+M:PropertyMapper.Configuration.PropMapBuilder.WithConfiguration(PropertyMapper.Configuration.PropMapConfiguration)|PropMapBuilder.WithConfiguration.md#PropertyMapper.Configuration.PropMapBuilder.WithConfiguration(PropertyMapper.Configuration.PropMapConfiguration)|WithConfiguration(PropMapConfiguration)
+M:PropertyMapper.Configuration.PropMapBuilder.WithConfiguration(System.Func{PropertyMapper.Configuration.PropMapConfiguration,PropertyMapper.Configuration.PropMapConfiguration})|PropMapBuilder.WithConfiguration.md#PropertyMapper.Configuration.PropMapBuilder.WithConfiguration(System.Func_PropertyMapper.Configuration.PropMapConfiguration,PropertyMapper.Configuration.PropMapConfiguration_)|WithConfiguration(Func<PropMapConfiguration,PropMapConfiguration>)
+M:PropertyMapper.Configuration.PropMapBuilder.Configure``2(System.Action{PropertyMapper.Configuration.TypePairConfiguration{``0,``1}})|PropMapBuilder.Configure.43H6JG58SLOXIQAGO3WRE3Z38.md|Configure<TIn,TOut>(Action<TypePairConfiguration<TIn,TOut>>)
+M:PropertyMapper.Configuration.PropMapBuilder.WithGlobalIgnore(System.String[])|PropMapBuilder.WithGlobalIgnore.M0NBMT6PCNVJ1AUD1URYM869B.md|WithGlobalIgnore(string[])
+M:PropertyMapper.Configuration.PropMapBuilder.WarmupOnStartup``2|PropMapBuilder.WarmupOnStartup_TIn,TOut_().md|WarmupOnStartup<TIn,TOut>()
+M:PropertyMapper.Configuration.PropMapBuilder.Build|PropMapBuilder.Build().md|Build()
+N:PropertyMapper.Configuration|PropertyMapper.Configuration.md|PropertyMapper.Configuration
+T:PropertyMapper.Configuration.PropMapBuilder|PropMapBuilder.md|PropMapBuilder
+P:PropertyMapper.Configuration.PropMapConfiguration.ThrowOnUnmappedProperties|PropMapConfiguration.ThrowOnUnmappedProperties.md|ThrowOnUnmappedProperties
+P:PropertyMapper.Configuration.PropMapConfiguration.MaxMappingDepth|PropMapConfiguration.MaxMappingDepth.md|MaxMappingDepth
+P:PropertyMapper.Configuration.PropMapConfiguration.GlobalIgnoredProperties|PropMapConfiguration.GlobalIgnoredProperties.md|GlobalIgnoredProperties
+M:PropertyMapper.Configuration.PropMapConfiguration.ThrowOnUnmapped(System.Boolean)|PropMapConfiguration.ThrowOnUnmapped.2N9MG22NSSCJSCENNVHRUY6D8.md|ThrowOnUnmapped(bool)
+M:PropertyMapper.Configuration.PropMapConfiguration.WithMaxDepth(System.Int32)|PropMapConfiguration.WithMaxDepth.5BI3XF0D0GFDMLM5G2XKXRVF.md|WithMaxDepth(int)
+M:PropertyMapper.Configuration.PropMapConfiguration.WithGlobalIgnore(System.String[])|PropMapConfiguration.WithGlobalIgnore.7WFL2XP0DZDND1DDYSW9SZ9E1.md|WithGlobalIgnore(string[])
+T:PropertyMapper.Configuration.PropMapConfiguration|PropMapConfiguration.md|PropMapConfiguration
+M:PropertyMapper.Configuration.TypePairConfiguration`2.Ignore``1(System.Linq.Expressions.Expression{System.Func{`1,``0}})|TypePairConfiguration_TIn,TOut_.Ignore.47Y5JYZI9VSIMEAAQAG2ALEBA.md|Ignore<TProp>(Expression<Func<TOut,TProp>>)
+M:PropertyMapper.Configuration.TypePairConfiguration`2.MapFrom``1(System.Linq.Expressions.Expression{System.Func{`1,``0}},System.Func{`0,``0})|TypePairConfiguration_TIn,TOut_.MapFrom.EGYESNML8XAEXNQBK3Y0FF71C.md|MapFrom<TProp>(Expression<Func<TOut,TProp>>, Func<TIn,TProp>)
+M:PropertyMapper.Configuration.TypePairConfiguration`2.MapFromExpression``1(System.Linq.Expressions.Expression{System.Func{`1,``0}},System.Linq.Expressions.Expression{System.Func{`0,``0}})|TypePairConfiguration_TIn,TOut_.MapFromExpression.3312TDR6G2XRKAXKYGABEGPN2.md|MapFromExpression<TProp>(Expression<Func<TOut,TProp>>, Expression<Func<TIn,TProp>>)
+M:PropertyMapper.Configuration.TypePairConfiguration`2.AfterMap(System.Action{`0,`1})|TypePairConfiguration_TIn,TOut_.AfterMap.61IIN053O14L03C04MEAJQ8CB.md|AfterMap(Action<TIn,TOut>)
+M:PropertyMapper.Configuration.TypePairConfiguration`2.ReverseMap|TypePairConfiguration_TIn,TOut_.ReverseMap().md|ReverseMap()
+M:PropertyMapper.Configuration.TypePairConfiguration`2.MapFromWithContext``2(System.Linq.Expressions.Expression{System.Func{`1,``1}},System.Func{`0,``0,``1})|TypePairConfiguration_TIn,TOut_.MapFromWithContext.TFC4YI6R2TF03EF24S2XZQWZD.md|MapFromWithContext<TCtx,TProp>(Expression<Func<TOut,TProp>>, Func<TIn,TCtx,TProp>)
+T:PropertyMapper.Configuration.TypePairConfiguration`2|TypePairConfiguration_TIn,TOut_.md|TypePairConfiguration<TIn,TOut>
+?:PropertyMapper.PropMap.#ctor|PropMap.PropMap.md|PropMap
+?:PropertyMapper.IPropMap.MapOrElse|IPropMap.MapOrElse.md|MapOrElse
+?:PropertyMapper.IPropMap.MapAsync|IPropMap.MapAsync.md|MapAsync
+?:PropertyMapper.IPropMap.MapCollection|IPropMap.MapCollection.md|MapCollection
+?:PropertyMapper.IPropMap.MapToList|IPropMap.MapToList.md|MapToList
+?:PropertyMapper.IPropMap.GetProjectionExpression|IPropMap.GetProjectionExpression.md|GetProjectionExpression
+?:PropertyMapper.IPropMap.Project|IPropMap.Project.md|Project
+?:PropertyMapper.PropMap.MapAsync|PropMap.MapAsync.md|MapAsync
+?:PropertyMapper.PropMap.MapCollection|PropMap.MapCollection.md|MapCollection
+?:PropertyMapper.PropMap.MapToList|PropMap.MapToList.md|MapToList
+?:PropertyMapper.PropMap.MapOrElse|PropMap.MapOrElse.md|MapOrElse
+?:PropertyMapper.PropMap.GetProjectionExpression|PropMap.GetProjectionExpression.md|GetProjectionExpression
+?:PropertyMapper.PropMap.Project|PropMap.Project.md|Project
+?:PropertyMapper.Extensions.ServiceCollectionExtensions.AddPropertyMapper|ServiceCollectionExtensions.AddPropertyMapper.md|AddPropertyMapper
+?:PropertyMapper.Extensions.ServiceCollectionExtensions.AddScopedFieldMask|ServiceCollectionExtensions.AddScopedFieldMask.md|AddScopedFieldMask
+?:PropertyMapper.Configuration.PropMapBuilder.WithConfiguration|PropMapBuilder.WithConfiguration.md|WithConfiguration

@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="benchmarks/PropertyMapper.Benchmarks/PropertyMapper.Benchmarks.csproj" Id="c89a8992-1c6b-47da-bfa4-7ecaa2fcf73c" />
+  <Project Path="src/PropertyMapper/PropertyMapper.csproj" />
+  <Project Path="tests/PropertyMapper.Tests/PropertyMapper.Tests.csproj" Id="12eb5c18-c00d-48d8-b60f-7df272532fef" />
+</Solution>
