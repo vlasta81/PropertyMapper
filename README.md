@@ -5,6 +5,10 @@
 
 High-performance, IL-based property mapper for .NET 10+.
 
+[![NuGet](https://img.shields.io/nuget/v/PropertyMapper.svg)](https://www.nuget.org/packages/PropertyMapper/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![.NET](https://img.shields.io/badge/.NET-10.0-purple.svg)](https://dotnet.microsoft.com/)
+
 ## Features
 
 - **IL code generation** — mapping delegates compiled once; zero overhead on repeated calls.
