@@ -1,6 +1,9 @@
-# PropertyMapper
+<h1>
+  <img src="docs/images/logo.svg" height="42" align="top" alt="PropertyMapper logo">
+  PropertyMapper
+</h1>
 
-High-performance, IL-based property mapper for .NET 10+. Delegates are compiled once via `Reflection.Emit` and cached in a lock-free `FrozenDictionary` — the hot path is as fast as hand-written code.
+High-performance, IL-based property mapper for .NET 10+.
 
 ## Features
 
