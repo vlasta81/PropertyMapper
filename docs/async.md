@@ -32,9 +32,9 @@ The mapper compiles the delegate before entering `Task.Run` to avoid IL-emit ins
 Maps a collection in parallel using `Parallel.ForAsync`. Use when the source is large and per-item work justifies thread overhead:
 
 ```csharp
-OrderDto[] results = await mapper.MapParallelAsync<Order, OrderDto>(
+List<OrderDto> results = await mapper.MapParallelAsync<Order, OrderDto>(
     orders,
-    degreeOfParallelism: Environment.ProcessorCount,
+    maxDegreeOfParallelism: Environment.ProcessorCount,
     cancellationToken: ct)
     .ConfigureAwait(false);
 ```

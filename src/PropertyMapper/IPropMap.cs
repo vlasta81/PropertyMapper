@@ -13,8 +13,9 @@ namespace PropertyMapper
     /// and inject <see cref="IPropMap"/> rather than the concrete <see cref="PropMap"/>.
     /// </summary>
     /// <remarks>
-    /// <see cref="PropMap.Clear"/> is intentionally omitted from this interface to prevent
-    /// consumers from wiping the singleton mapping cache.
+    /// <c>Clear()</c> is intentionally <see langword="internal"/> on <see cref="PropMap"/>
+    /// and omitted from this interface. Production code should never need to reset the
+    /// compiled-delegate cache; the method exists solely for test isolation.
     /// </remarks>
     public interface IPropMap
     {

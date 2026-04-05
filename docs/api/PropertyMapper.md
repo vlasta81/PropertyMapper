@@ -2,7 +2,6 @@
 - **[PropMap](PropMap.md 'PropertyMapper\.PropMap')**
   - **[PropMap\(\)](PropMap.PropMap.md#PropertyMapper.PropMap.PropMap() 'PropertyMapper\.PropMap\.PropMap\(\)')**
   - **[PropMap\(PropMapConfiguration\)](PropMap.PropMap.md#PropertyMapper.PropMap.PropMap(PropertyMapper.Configuration.PropMapConfiguration) 'PropertyMapper\.PropMap\.PropMap\(PropertyMapper\.Configuration\.PropMapConfiguration\)')**
-  - **[Clear\(\)](PropMap.Clear().md 'PropertyMapper\.PropMap\.Clear\(\)')**
   - **[Clone&lt;T&gt;\(T\)](PropMap.Clone.EFQITBIZ24A837MBN4YES00BD.md 'PropertyMapper\.PropMap\.Clone\<T\>\(T\)')**
   - **[GetProjectionExpression&lt;TIn,TOut&gt;\(\)](PropMap.GetProjectionExpression.md#PropertyMapper.PropMap.GetProjectionExpression_TIn,TOut_() 'PropertyMapper\.PropMap\.GetProjectionExpression\<TIn,TOut\>\(\)')**
   - **[GetProjectionExpression&lt;TIn,TOut&gt;\(IFieldMask&lt;TOut&gt;\)](PropMap.GetProjectionExpression.md#PropertyMapper.PropMap.GetProjectionExpression_TIn,TOut_(PropertyMapper.Masking.IFieldMask_TOut_) 'PropertyMapper\.PropMap\.GetProjectionExpression\<TIn,TOut\>\(PropertyMapper\.Masking\.IFieldMask\<TOut\>\)')**

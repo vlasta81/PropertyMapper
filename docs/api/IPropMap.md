@@ -13,8 +13,9 @@ Derived
 &#8627; [PropMap](PropMap.md 'PropertyMapper\.PropMap')
 
 ### Remarks
-[Clear\(\)](PropMap.Clear().md 'PropertyMapper\.PropMap\.Clear\(\)') is intentionally omitted from this interface to prevent
-            consumers from wiping the singleton mapping cache\.
+`Clear()` is intentionally [internal](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/internal 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/keywords/internal') on [PropMap](PropMap.md 'PropertyMapper\.PropMap')
+            and omitted from this interface\. Production code should never need to reset the
+            compiled\-delegate cache; the method exists solely for test isolation\.
 
 | Methods | |
 | :--- | :--- |

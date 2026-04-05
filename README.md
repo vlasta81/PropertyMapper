@@ -43,7 +43,7 @@ OrderDto[] batch = mapper.MapBatch<Order, OrderDto>(orders.AsSpan());
 OrderDto dto = await mapper.MapAsync<Order, OrderDto>(order, cancellationToken);
 
 // Parallel async
-OrderDto[] results = await mapper.MapParallelAsync<Order, OrderDto>(orders, degreeOfParallelism: 4, cancellationToken);
+List<OrderDto> results = await mapper.MapParallelAsync<Order, OrderDto>(orders, maxDegreeOfParallelism: 4, cancellationToken);
 
 // Streaming (IAsyncEnumerable)
 await foreach (OrderDto item in mapper.MapStreamAsync<Order, OrderDto>(asyncOrders, cancellationToken))
@@ -99,7 +99,7 @@ services.AddPropertyMapper(builder =>
 });
 ```
 
-Inject `IPropMap` (recommended — mockable in tests) or the concrete `PropMap`:
+Inject `IPropMap` (recommended — mockable in tests):
 
 ```csharp
 public class OrderService(IPropMap mapper)

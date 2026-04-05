@@ -43,8 +43,13 @@ namespace PropertyMapper
         /// This method acquires the compile lock, so it is safe to call concurrently with mapping operations.
         /// Any <see cref="Configure{TIn,TOut}()"/> registrations are preserved; only the compiled artefacts
         /// are discarded.
+        /// <para>
+        /// Intentionally <see langword="internal"/> — the method is available to
+        /// <c>PropertyMapper.Tests</c> via <c>InternalsVisibleTo</c> for test isolation,
+        /// but is not part of the public API. Production code should never need to reset the cache.
+        /// </para>
         /// </remarks>
-        public void Clear()
+        internal void Clear()
         {
             lock (_compileLock)
             {

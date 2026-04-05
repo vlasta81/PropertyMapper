@@ -66,7 +66,6 @@ M:PropertyMapper.PropMap.MapToImmutableArray``2(System.Collections.Generic.IEnum
 M:PropertyMapper.PropMap.MapToImmutableList``2(System.Collections.Generic.IEnumerable{``0})|PropMap.MapToImmutableList.6OR8KU5HGMOTME9S3QOZSSNLB.md|MapToImmutableList<TIn,TOut>(IEnumerable<TIn>)
 M:PropertyMapper.PropMap.MapWithContext``3(``0,``2)|PropMap.MapWithContext.VBYRHLVUYW6CLL935CECSDD7A.md|MapWithContext<TIn,TOut,TCtx>(TIn, TCtx)
 M:PropertyMapper.PropMap.Map``2(``0)|PropMap.Map.GHQD3IQP9BO7WZYKLBLGJIYSE.md|Map<TIn,TOut>(TIn)
-M:PropertyMapper.PropMap.Clear|PropMap.Clear().md|Clear()
 M:PropertyMapper.PropMap.MapBatch``2(System.ReadOnlySpan{``0})|PropMap.MapBatch.AAPNY1A78JL9AD0VK3C7TBLPA.md|MapBatch<TIn,TOut>(ReadOnlySpan<TIn>)
 M:PropertyMapper.PropMap.MapBatchInPlace``2(System.ReadOnlySpan{``0},System.Span{``1})|PropMap.MapBatchInPlace.O3WTCWYM7MWL6OG084FR3WAFE.md|MapBatchInPlace<TIn,TOut>(ReadOnlySpan<TIn>, Span<TOut>)
 M:PropertyMapper.PropMap.#ctor|PropMap.PropMap.md#PropertyMapper.PropMap.PropMap()|PropMap()

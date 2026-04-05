@@ -62,7 +62,7 @@ Initial release.
 - `Warmup<TIn,TOut>()` — pre-compile a single delegate
 - `WarmupBatch(Type[])` — parallel pre-compilation of multiple pairs
 - `GetStatistics()` — cache utilisation snapshot
-- `Clear()` on `PropMap` — reset cache (intentionally absent from `IPropMap`)
+- `Clear()` on `PropMap` — reset cache; `internal` (intentionally absent from `IPropMap`)
 
 #### Dependency Injection
 - `AddPropertyMapper()` — registers `IPropMap` + `PropMap` as singletons
@@ -83,3 +83,14 @@ Initial release.
 - 13 BenchmarkDotNet classes covering all API surface
 - `Run-Benchmarks.ps1` wrapper script (interactive menu, Quick mode, custom output dir)
 - Results vs AutoMapper and Mapster across hot path, collections, async, warmup and cold-path scenarios
+
+### Changed
+- `Clear()` on `PropMap` changed from `public` to `internal` — accessible only within the library and the test project (via `InternalsVisibleTo`); never part of the `IPropMap` DI contract
+- NuGet package metadata: added `<PackageIcon>icon.png</PackageIcon>` (128 × 128 px) and `<RepositoryType>git</RepositoryType>`; removed duplicate `<PackageLicenseExpression>` entry from `.csproj`
+
+### Fixed
+- `docs/advanced.md`: `FieldMask<T>` examples corrected — constructor accepts *excluded* property names (`params string[]`); non-existent static `Include()` calls removed from all code samples
+- `docs/advanced.md`: `Validate<TIn,TOut>()` return type corrected to `MappingValidationResult` (record struct with `IsValid` and `UnmappedTargetProperties`); was incorrectly shown as `IReadOnlyList<string>`
+- `docs/advanced.md`: `GetStatistics()` member names corrected to `CachedMappers`, `CachedPlans`, and `TotalMemoryBytes`
+- `docs/advanced.md`, `docs/async.md`, `README.md`: `MapParallelAsync` return type corrected to `Task<List<TOut>>`; parameter name corrected to `maxDegreeOfParallelism`
+- `docs/advanced.md`: Typo `concretMapper` → `concreteMapper`

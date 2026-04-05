@@ -87,11 +87,11 @@ OrderDto dto = mapper.MapWithContext<Order, OrderDto, ExchangeRates>(order, rate
 ```csharp
 using PropertyMapper.Masking;
 
-// Build a mask that exposes only Id and Name
-IFieldMask<UserDto> mask = FieldMask<UserDto>.Include(x => x.Id, x => x.Name);
+// Mask that zeroes out sensitive fields after mapping
+FieldMask<UserDto> mask = new FieldMask<UserDto>("Email", "Phone");
 
 UserDto dto = mapper.MapThenApplyMask<User, UserDto>(user, mask);
-// dto.Email, dto.Phone, etc. are default/null
+// dto.Email, dto.Phone are null/default
 ```
 
 ### Benchmark (hot path, Run 9)
@@ -113,8 +113,8 @@ UserDto dto = mapper.MapThenApplyMask<User, UserDto>(user, mask);
 IQueryable<UserDto> query = mapper.Project<User, UserDto>(dbContext.Users);
 List<UserDto> dtos = await query.ToListAsync(ct).ConfigureAwait(false);
 
-// With field mask — restricts the SELECT to unmasked columns only
-IFieldMask<UserDto> mask = FieldMask<UserDto>.Include(x => x.Id, x => x.Name);
+// With field mask — excludes sensitive fields from the SQL SELECT
+FieldMask<UserDto> mask = new FieldMask<UserDto>("Email", "Phone");
 IQueryable<UserDto> query = mapper.Project<User, UserDto>(dbContext.Users, mask);
 
 // Obtain the expression directly
@@ -130,10 +130,10 @@ Expression<Func<User, UserDto>> expr = mapper.GetProjectionExpression<User, User
 Reports target properties that have no matching source property. Use this at startup or in tests to catch mapping gaps early:
 
 ```csharp
-IReadOnlyList<string> unmapped = mapper.Validate<Order, OrderDto>();
-if (unmapped.Count > 0)
+MappingValidationResult result = mapper.Validate<Order, OrderDto>();
+if (!result.IsValid)
 {
-    throw new InvalidOperationException($"Unmapped: {string.Join(", ", unmapped)}");
+    throw new InvalidOperationException($"Unmapped: {string.Join(", ", result.UnmappedTargetProperties)}");
 }
 ```
 
@@ -145,16 +145,14 @@ if (unmapped.Count > 0)
 
 ```csharp
 MappingStatistics stats = mapper.GetStatistics();
-Console.WriteLine($"Cached type pairs: {stats.CachedPairs}");
-Console.WriteLine($"Total mappings: {stats.TotalMappingsPerformed}");
+Console.WriteLine($"Cached mappers: {stats.CachedMappers}");
+Console.WriteLine($"Cached plans:   {stats.CachedPlans}");
+Console.WriteLine($"Memory estimate: {stats.TotalMemoryBytes} bytes");
 ```
 
-`Clear()` is available on `PropMap` (not `IPropMap`) and resets the entire cache. It is intentionally not on the interface to prevent consumers from wiping a shared singleton:
-
-```csharp
-PropMap concretMapper = (PropMap)mapper;
-concreteMapper.Clear();
-```
+> `Clear()` is `internal` and not part of the public API. It exists solely for test isolation
+> (accessible to `PropertyMapper.Tests` via `InternalsVisibleTo`). Production code — including
+> code that injects `IPropMap` — never needs to reset the cache.
 
 ---
 
