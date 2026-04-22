@@ -94,13 +94,13 @@ UserDto dto = mapper.MapThenApplyMask<User, UserDto>(user, mask);
 // dto.Email, dto.Phone are null/default
 ```
 
-### Benchmark (hot path, Run 9)
+### Benchmark (hot path, Run 10)
 
 | Method | Mean |
 |--------|-----:|
-| `Map` (no mask) | 13.6 ns |
-| `MapThenApplyMask` (1 field) | 15.2 ns |
-| `MapThenApplyMask` (3 fields) | 18.8 ns |
+| `Map` (no mask) | 15.3 ns |
+| `MapThenApplyMask` (1 field) | 15.3 ns |
+| `MapThenApplyMask` (3 fields) | 18.6 ns |
 
 ---
 

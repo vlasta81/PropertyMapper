@@ -91,6 +91,7 @@ namespace PropertyMapper
                 List<TOut> result = source is ICollection<TIn> col ? new(col.Count) : [];
                 foreach (TIn item in source)
                 {
+                    cancellationToken.ThrowIfCancellationRequested();
                     result.Add(mapper(item));
                 }
                 return result;

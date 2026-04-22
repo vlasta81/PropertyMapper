@@ -235,4 +235,47 @@ public class ConcurrencyTests
         // The main goal is to ensure no unhandled exceptions or deadlocks
         Assert.True(true); // If we reached here, no deadlock occurred
     }
+
+    /// <summary>
+    /// Verifies that <see cref="PropMap.GetStatistics"/> can be called concurrently with
+    /// active mapping without throwing or deadlocking.
+    /// <see cref="PropMap.GetStatistics"/> acquires the compile lock for a consistent read;
+    /// this test exercises that path under parallel load.
+    /// </summary>
+    [Fact]
+    public async Task GetStatistics_CalledConcurrentlyWithMapping_DoesNotThrow()
+    {
+        PropMap mapper = new PropMap();
+        SimpleSource source = new SimpleSource { Id = 1, Name = "Stats" };
+        List<Exception> exceptions = new List<Exception>();
+        using CancellationTokenSource cts = new CancellationTokenSource(TimeSpan.FromSeconds(2));
+
+        Task mappingTask = Task.Run(() =>
+        {
+            while (!cts.Token.IsCancellationRequested)
+            {
+                try { mapper.Map<SimpleSource, SimpleTarget>(source); }
+                catch (OperationCanceledException) { }
+                catch (Exception ex) { lock (exceptions) { exceptions.Add(ex); } }
+            }
+        }, CancellationToken.None);
+
+        Task statsTask = Task.Run(() =>
+        {
+            while (!cts.Token.IsCancellationRequested)
+            {
+                try
+                {
+                    MappingStatistics stats = mapper.GetStatistics();
+                    Assert.True(stats.CachedMappers >= 0);
+                }
+                catch (OperationCanceledException) { }
+                catch (Exception ex) { lock (exceptions) { exceptions.Add(ex); } }
+            }
+        }, CancellationToken.None);
+
+        await Task.WhenAll(mappingTask, statsTask);
+
+        Assert.Empty(exceptions);
+    }
 }

@@ -32,8 +32,8 @@ namespace PropertyMapper.Configuration
         /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="depth"/> is outside the range 1–256.</exception>
         public PropMapConfiguration WithMaxDepth(int depth)
         {
-            if (depth < 1 || depth > 256)
-                throw new ArgumentOutOfRangeException(nameof(depth), "Depth must be between 1 and 256");
+            ArgumentOutOfRangeException.ThrowIfLessThan(depth, 1);
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(depth, 256);
             return this with { MaxMappingDepth = depth };
         }
 

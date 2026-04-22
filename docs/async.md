@@ -81,19 +81,22 @@ Useful for batch-writing to a database or bulk-sending to an API while keeping m
 | `IAsyncEnumerable` source, low memory | `MapStreamAsync` |
 | `IAsyncEnumerable` source, batch processing | `MapStreamBatchedAsync` |
 
-## Benchmark Results (Run 9 — Intel i5-7600K, .NET 10)
+## Benchmark Results (Run 10 — Intel i5-7600K, .NET 10)
 
 | Method | N=10 | N=100 | N=1 000 |
 |--------|-----:|------:|--------:|
-| ManualSequential (baseline) | 316 ns | 2,822 ns | 30,926 ns |
-| `MapAsync_Sequential` | 1,145 ns | 5,701 ns | 39,572 ns |
-| `ManualAsync_TaskRun` | 1,182 ns | 5,806 ns | 37,037 ns |
-| `MapParallelAsync` | 3,378 ns | 11,629 ns | 81,350 ns |
+| ManualSequential (baseline) | 246 ns | 2,273 ns | 27,610 ns |
+| `ManualAsync_TaskRun` | 1,118 ns | 3,803 ns | 34,820 ns |
+| `MapAsync_Sequential` | 1,177 ns | 5,701 ns | 36,393 ns |
+| `MapStreamBatchedAsync_Collect` | 6,628 ns | — | 286,512 ns |
+| `MapStreamAsync_Collect` | 8,175 ns | — | 399,700 ns |
+| `MapParallelAsync` | 2,710 ns | 11,629 ns | 80,693 ns |
 
 Key observations:
-- `MapAsync` for N=10 is **3% faster** than an equivalent `Task.Run` wrapper.
-- `MapParallelAsync` has higher overhead for small N; it pays off for CPU-bound workloads at large N with multiple physical cores.
-- All async variants include `Task.Run` scheduling cost vs the synchronous baseline.
+- `MapAsync_Sequential` at N=10 is within **~5%** of a manual `Task.Run` wrapper.
+- `MapStreamAsync` / `MapStreamBatchedAsync` carry significant async-enumerator state-machine overhead at small N. At N=1 000, `MapStreamBatchedAsync` is still **10× slower** than `ManualSequential` due to the overhead of batching and the IAsyncEnumerable protocol.
+- Use streaming methods for pipeline / backpressure scenarios, not for small in-memory collections.
+- `MapParallelAsync` has lower per-call overhead than streaming at N=10; it pays off for CPU-bound workloads at large N with multiple physical cores.
 
 → Full results: [benchmarks/PropertyMapper.Benchmarks/README.md](../benchmarks/PropertyMapper.Benchmarks/README.md)
 

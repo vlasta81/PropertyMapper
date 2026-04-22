@@ -33,7 +33,7 @@ namespace PropertyMapper.Core
         /// </returns>
         public readonly ReadOnlySpan<PropertyBinding> AsSpan(int start, int length)
         {
-            ReadOnlySpan<PropertyBinding> fullSpan = MemoryMarshal.CreateReadOnlySpan(ref Unsafe.AsRef(in _element0), 16);
+            ReadOnlySpan<PropertyBinding> fullSpan = MemoryMarshal.CreateReadOnlySpan(in _element0, 16);
             return fullSpan.Slice(start, length);
         }
     }

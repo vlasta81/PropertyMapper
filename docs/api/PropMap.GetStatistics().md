@@ -1,6 +1,7 @@
 ## PropMap\.GetStatistics\(\) Method
 
-Returns a point\-in\-time snapshot of this mapper's cache utilisation\.
+Returns a consistent point\-in\-time snapshot of this mapper's cache utilisation\.
+Acquires the compile lock to ensure the three cache dictionaries are read atomically\.
 
 ```csharp
 public PropertyMapper.MappingStatistics GetStatistics();

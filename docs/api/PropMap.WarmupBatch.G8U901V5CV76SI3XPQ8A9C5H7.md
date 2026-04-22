@@ -1,6 +1,6 @@
 ## PropMap\.WarmupBatch\(Type\[\]\) Method
 
-Pre\-compiles mapping delegates for multiple type pairs concurrently\.
+Pre\-compiles mapping delegates for multiple type pairs in a single sequential pass\.
 Useful at application startup to eliminate first\-call overhead for all known type pairs at once\.
 
 ```csharp

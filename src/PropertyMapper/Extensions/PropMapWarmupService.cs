@@ -25,17 +25,14 @@ namespace PropertyMapper.Extensions
         }
 
         /// <summary>
-        /// Invoked by the host when the application has started. Calls
+        /// Invoked by the host during application startup. Calls
         /// <see cref="PropMap.WarmupBatch"/> to pre-compile all registered type pairs synchronously.
         /// </summary>
         /// <param name="cancellationToken">Cancellation token provided by the host (not observed; warmup is fast).</param>
         /// <returns>A completed <see cref="Task"/>.</returns>
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            if (_typePairs.Length > 0)
-            {
-                _mapper.WarmupBatch(_typePairs);
-            }
+            _mapper.WarmupBatch(_typePairs);
             return Task.CompletedTask;
         }
 

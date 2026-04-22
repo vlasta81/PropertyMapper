@@ -52,7 +52,7 @@ A new [TOut](PropMap.MapWithContext.VBYRHLVUYW6CLL935CECSDD7A.md#PropertyMapper.
 When [source](PropMap.MapWithContext.VBYRHLVUYW6CLL935CECSDD7A.md#PropertyMapper.PropMap.MapWithContext_TIn,TOut,TCtx_(TIn,TCtx).source 'PropertyMapper\.PropMap\.MapWithContext\<TIn,TOut,TCtx\>\(TIn, TCtx\)\.source') is [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/keywords/null')\.
 
 [System\.ArgumentException](https://learn.microsoft.com/en-us/dotnet/api/system.argumentexception 'System\.ArgumentException')  
-When [context](PropMap.MapWithContext.VBYRHLVUYW6CLL935CECSDD7A.md#PropertyMapper.PropMap.MapWithContext_TIn,TOut,TCtx_(TIn,TCtx).context 'PropertyMapper\.PropMap\.MapWithContext\<TIn,TOut,TCtx\>\(TIn, TCtx\)\.context') is an [System\.IServiceProvider](https://learn.microsoft.com/en-us/dotnet/api/system.iserviceprovider 'System\.IServiceProvider') or `IServiceScopeFactory`\.
+When [context](PropMap.MapWithContext.VBYRHLVUYW6CLL935CECSDD7A.md#PropertyMapper.PropMap.MapWithContext_TIn,TOut,TCtx_(TIn,TCtx).context 'PropertyMapper\.PropMap\.MapWithContext\<TIn,TOut,TCtx\>\(TIn, TCtx\)\.context') is an [System\.IServiceProvider](https://learn.microsoft.com/en-us/dotnet/api/system.iserviceprovider 'System\.IServiceProvider') or [Microsoft\.Extensions\.DependencyInjection\.IServiceScopeFactory](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.iservicescopefactory 'Microsoft\.Extensions\.DependencyInjection\.IServiceScopeFactory')\.
 
 ### Remarks
 

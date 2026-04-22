@@ -18,8 +18,8 @@ namespace PropertyMapper.Benchmarks.Benchmarks;
 /// </para>
 /// <list type="bullet">
 /// <item><description><b>Warmup_SinglePair</b> — compiles one <see cref="WideSource"/>→<see cref="WideTarget"/> delegate.</description></item>
-/// <item><description><b>WarmupBatch_TwoPairs</b> — compiles two delegates in a single call (sequential for-loop, no thread overhead).</description></item>
-/// <item><description><b>WarmupBatch_FourPairs</b> — compiles four delegates in a single call; demonstrates linear scaling.</description></item>
+/// <item><description><b>WarmupBatch_TwoPairs</b> — compiles two delegates in a single sequential pass; amortises lock acquisition over two pairs.</description></item>
+/// <item><description><b>WarmupBatch_FourPairs</b> — compiles four delegates in a single sequential pass; demonstrates linear per-pair scaling.</description></item>
 /// </list>
 /// </remarks>
 [BenchmarkCategory("Warmup")]

@@ -8,8 +8,8 @@ Comprehensive xUnit test suite for the PropertyMapper library.
 
 | Metric | Value |
 |--------|-------|
-| Total tests | **282** |
-| Passing | **281** |
+| Total tests | **286** |
+| Passing | **285** |
 | Skipped | 1 (timing-sensitive, environment-dependent) |
 | Framework | xUnit (.NET 10) |
 
@@ -160,10 +160,11 @@ All test models are defined in `TestModels.cs`:
 
 | Operation | Measured time |
 |-----------|--------------|
-| First call — IL compilation | ~278 μs |
-| Hot path — simple object | ~13.5 ns |
-| Hot path — struct | ~7.2 ns |
-| Hot path — nested object | ~40.4 ns |
-| Batch — 1 000 objects | ~31 μs |
+| First call — IL compilation | ~253 μs |
+| Hot path — simple object | ~12.8 ns |
+| Hot path — struct | ~7.5 ns |
+| Hot path — nested object | ~42.8 ns |
+| MapWithContext — 1 setter | ~80 ns |
+| Batch — 1 000 objects | ~27–29 μs |
 
 → Full benchmark results: [benchmarks/PropertyMapper.Benchmarks/README.md](../../benchmarks/PropertyMapper.Benchmarks/README.md)

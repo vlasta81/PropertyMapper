@@ -121,6 +121,22 @@ public class SecurityGuardTests
     }
 
     /// <summary>
+    /// Verifies that registering a context-aware setter with <see cref="IServiceScopeFactory"/>
+    /// as the context type throws <see cref="InvalidOperationException"/> at configuration time.
+    /// </summary>
+    [Fact]
+    public void MapFromWithContext_IServiceScopeFactoryContext_ThrowsAtConfigTime()
+    {
+        var ex = Assert.Throws<InvalidOperationException>(() =>
+            new TypePairConfiguration<PriceSource, PriceTarget>()
+                .MapFromWithContext<IServiceScopeFactory, decimal>(
+                    x => x.PriceEur,
+                    (src, factory) => 0m));
+
+        Assert.Contains("IServiceScopeFactory", ex.Message);
+    }
+
+    /// <summary>
     /// Verifies that a plain value-object context type does not trigger the guard.
     /// </summary>
     [Fact]
@@ -151,6 +167,24 @@ public class SecurityGuardTests
                 new SimpleSource { Id = 1 }, sp));
 
         Assert.Contains("IServiceProvider", ex.Message);
+    }
+
+    /// <summary>
+    /// Verifies that passing an <see cref="IServiceScopeFactory"/> instance at call-time to
+    /// <see cref="PropMap.MapWithContext{TIn,TOut,TCtx}"/> throws <see cref="ArgumentException"/>.
+    /// </summary>
+    [Fact]
+    public void MapWithContext_IServiceScopeFactoryPassedAtCallTime_Throws()
+    {
+        var mapper = new PropMap();
+        IServiceScopeFactory factory = new ServiceCollection().BuildServiceProvider()
+            .GetRequiredService<IServiceScopeFactory>();
+
+        var ex = Assert.Throws<ArgumentException>(() =>
+            mapper.MapWithContext<SimpleSource, SimpleTarget, IServiceScopeFactory>(
+                new SimpleSource { Id = 1 }, factory));
+
+        Assert.Contains("IServiceScopeFactory", ex.Message);
     }
 
     /// <summary>

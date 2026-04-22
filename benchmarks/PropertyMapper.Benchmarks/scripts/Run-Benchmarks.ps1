@@ -8,7 +8,7 @@
 
 .PARAMETER Benchmark
     Benchmark to run. Shows an interactive menu when omitted.
-    Allowed values: All | Simple | Wide | Nested | Record | Struct | Collection | Batch | Clone | FirstCall | Async | Dictionary | Warmup | FieldMask
+    Allowed values: All | Simple | Wide | Nested | Record | Struct | Collection | Batch | Clone | FirstCall | Async | Dictionary | Warmup | FieldMask | Context | Statistics
 
 .PARAMETER Quick
     Quick mode (ShortRun) -- results are not fully representative,
@@ -66,12 +66,20 @@
 .EXAMPLE
     .\Run-Benchmarks.ps1 -Benchmark FieldMask -Quick
     # Quick hot-path comparison: plain Map vs MapWithMask (1 field / 3 fields)
+
+.EXAMPLE
+    .\Run-Benchmarks.ps1 -Benchmark Context
+    # MapWithContext overhead: guard + lookup, 1 setter, 3 setters vs plain Map
+
+.EXAMPLE
+    .\Run-Benchmarks.ps1 -Benchmark Statistics -Quick
+    # GetStatistics lock-acquire cost vs lock-free Map hot path
 #>
 
 [CmdletBinding()]
 param (
     [Parameter(Position = 0)]
-    [ValidateSet('All', 'Simple', 'Wide', 'Nested', 'Record', 'Struct', 'Collection', 'Batch', 'Clone', 'FirstCall', 'Async', 'Dictionary', 'Warmup', 'FieldMask', IgnoreCase = $true)]
+    [ValidateSet('All', 'Simple', 'Wide', 'Nested', 'Record', 'Struct', 'Collection', 'Batch', 'Clone', 'FirstCall', 'Async', 'Dictionary', 'Warmup', 'FieldMask', 'Context', 'Statistics', IgnoreCase = $true)]
     [string] $Benchmark,
 
     [switch] $Quick,
@@ -151,6 +159,8 @@ $Registry = [ordered]@{
     'Dictionary' = @{ Filter = '*Dictionary*';    Desc = 'MapDictionary vs manual           - params: 10 / 100 / 1000'       }
     'Warmup'     = @{ Filter = '*Warmup*';        Desc = 'Cold-path compile cost           - Warmup vs WarmupBatch'           }
     'FieldMask'  = @{ Filter = '*FieldMask*';     Desc = 'MapWithMask overhead             - Map vs mask (1 / 3 fields)'     }
+    'Context'    = @{ Filter = '*Context*';      Desc = 'MapWithContext overhead          - guard + lookup + 1 / 3 setters'  }
+    'Statistics' = @{ Filter = '*Statistics*';   Desc = 'GetStatistics lock-acquire cost  - lock vs lock-free Map hot path'   }
 }
 
 # ------------------------------------------------------------------------------

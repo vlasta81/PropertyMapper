@@ -84,25 +84,25 @@ ObservableCollection<OrderDto> target = new ObservableCollection<OrderDto>();
 mapper.MapCollection<Order, OrderDto>(orders, target);
 ```
 
-## Benchmark Results (N=1 000, Run 9)
+## Benchmark Results (N=1 000, Run 10)
 
 | Benchmark | Mean | vs Manual |
 |-----------|-----:|----------:|
-| Manual | 30,734 ns | baseline |
-| `MapToList` (Span) | 30,862 ns | +0.4% |
-| `PropertyMapper` (MapToList) | 31,686 ns | +3.1% |
-| `MapToArray` | 31,949 ns | +3.9% |
-| `MapToImmutableArray` | 31,740 ns | +3.3% |
-| Mapster | 30,583 ns | −0.5% |
-| AutoMapper | 35,257 ns | +14.7% |
+| Manual | 27,828 ns | baseline |
+| `MapToList` (Span) | 28,524 ns | +2.5% |
+| `PropertyMapper` (MapToList) | 28,737 ns | +3.3% |
+| `MapToArray` | 28,737 ns | +3.3% |
+| `MapToImmutableArray` | 29,230 ns | +5.0% |
+| Mapster | 28,074 ns | +0.9% |
+| AutoMapper | 31,293 ns | +12.5% |
 
 Batch (Span):
 
 | Benchmark | Mean | vs Manual |
 |-----------|-----:|----------:|
-| Manual | 28,564 ns | baseline |
-| `MapBatchInPlace` | 30,916 ns | +8.2% |
-| `MapBatch` | 31,656 ns | +10.8% |
+| Manual | 25,466 ns | baseline |
+| `MapBatchInPlace` | 27,600 ns | +8.4% |
+| `MapBatch` | 27,109 ns | +6.5% |
 
 → Full results: [benchmarks/PropertyMapper.Benchmarks/README.md](../benchmarks/PropertyMapper.Benchmarks/README.md)
 

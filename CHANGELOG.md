@@ -5,6 +5,57 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [0.2.0] — 2026-04-22
+
+### Added
+
+#### Core
+- `IsForbiddenContextType(Type)` — shared predicate in `ClosureInspector` that blocks `IServiceProvider`, `IServiceScopeFactory`, `HttpContext`, and `DbContext`-derived types from being used as mapping context; enforced both at configuration time (`GuardAgainstSingletonContext`, throws `InvalidOperationException`) and at call time (`MapWithContext`, throws `ArgumentException`)
+
+#### Benchmarks
+- `ContextBenchmark` — four methods measuring `MapWithContext` overhead: `Map_NoContext` baseline, `MapWithContext_NoSetters`, `MapWithContext_OneContextSetter`, `MapWithContext_ThreeContextSetters`
+- `StatisticsBenchmark` — two methods measuring `GetStatistics` lock-acquire cost vs lock-free `Map_Hot` baseline
+- `AsyncBenchmark` — added `MapStreamAsync_Collect` and `MapStreamBatchedAsync_Collect` (batchSize=10) methods; added private `GenerateAsync()` helper using `Task.Yield()`
+- `Run-Benchmarks.ps1` — `Context` and `Statistics` entries added to `[ValidateSet]`, `$Registry`, `.PARAMETER` description, and two new `.EXAMPLE` blocks
+
+#### Test suite
+- `SecurityGuardTests` — 3 new tests: `IServiceScopeFactory` rejected at configuration time, `IServiceScopeFactory` rejected at call time, valid context type accepted
+- `AsyncMappingTests` — 1 new test: mid-loop cancellation of `MapStreamAsync` propagates `OperationCanceledException`
+- `ConcurrencyTests` — 1 new test: concurrent `GetStatistics` calls return consistent non-negative snapshot values
+
+### Changed
+
+#### Core
+- `GetStatistics()` now acquires `_compileLock` before reading `_mappers`, `_plans`, and `_delegateSizes` — guarantees a consistent three-dictionary snapshot under concurrent compilation; overhead is ~4 ns uncontended (previously lock-free but potentially inconsistent)
+- `WarmupBatch` — processes type pairs in a single sequential pass (no `Parallel.ForEach`); eliminates thread-scheduling noise on the cold path and simplifies allocation tracking
+- `WarmupBenchmark` — class-level XML summary corrected: "single sequential pass; amortises lock acquisition" (was "sequential for-loop, no thread overhead")
+
+#### Documentation
+- `benchmarks/README.md` — Run 10 (2026-04-22) results section added; Run 9 preserved as archive; Context and Statistics result sections updated with actual measured values (Context: 80 ns / 171 ns; Statistics: 17.5 ns); Async table extended with streaming methods
+- `src/PropertyMapper/README.md` — **Context-aware mapping** row added to Key Features table; `MapWithContext (1 setter) | 17.4 ns` row added to benchmark summary
+- `tests/PropertyMapper.Tests/README.md` — test count updated to 286 / 285; performance reference table updated to Run 10 values; `MapWithContext` row added
+- `README.md` — benchmark table updated to Run 10 values; `MapWithContext (1 setter) | 80 ns` row added; Tests documentation link corrected to 286 tests
+- `docs/getting-started.md` — warmup latency updated: ~278 μs → ~253 μs
+- `docs/collections.md` — Collection and Batch Span benchmark tables updated to Run 10 values
+- `docs/async.md` — benchmark table updated to Run 10 with `MapStreamAsync_Collect` and `MapStreamBatchedAsync_Collect` rows; guidance on streaming overhead added
+- `docs/advanced.md` — FieldMask benchmark table updated to Run 10 values (Run 9 → Run 10)
+
+### Fixed
+
+#### Code quality
+- `ClosureInspector` — `EndsWith` calls replaced with `EndsWith(string, StringComparison.Ordinal)` to eliminate implicit culture-sensitive comparison
+- `PropMap.Context.cs` — `Unsafe.AsRef<T>(in T)` updated to `Unsafe.AsRef<T>(ref Unsafe.AsRef(in value))` / correct overload for .NET 10 `ref readonly` semantics
+- `PropMap.Async.cs` — `CancellationToken` now threaded through the mid-loop `await` in `MapStreamAsync` so that cancellation is observed between items, not only at stream entry
+- `WarmupService` — added null-guard for `_pairsToWarm`; service no longer throws `NullReferenceException` when registered without explicit warmup pairs
+- `PropMap.Async.cs` — `SelectMany` LINQ chain replaced with a pre-allocated `List<T>` to eliminate hidden intermediate allocations in `MapParallelAsync`
+- `PropMapBuilder` — `ArgumentOutOfRangeException.ThrowIfLessThan` / `ThrowIfGreaterThan` used instead of manual `if + throw` for numeric guard clauses
+
+#### Documentation
+- `benchmarks/README.md` — `MapWithContext` estimated values (17–23 ns) corrected to actual measurements (80 ns / 171 ns); `GetStatistics` estimated value (118 ns / +104 ns) corrected to actual measurement (17.5 ns / +4.4 ns)
+- `docs/async.md` — "concurrently" removed from `WarmupBatch` description (batch is sequential, not parallel)
+
+---
+
 ## [0.1.0] — 2026-04-04
 
 Initial release.

@@ -106,7 +106,7 @@ public class UserService(IPropMap mapper, IUserRepository repo)
 
 ## Warmup
 
-The first call to any type pair compiles the IL delegate (~278 μs). For latency-sensitive services, pre-compile at startup:
+The first call to any type pair compiles the IL delegate (~253 μs). For latency-sensitive services, pre-compile at startup:
 
 ```csharp
 // Individual pair

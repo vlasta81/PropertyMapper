@@ -171,9 +171,8 @@ namespace PropertyMapper.Core
         }
 
         /// <summary>
-        /// Returns a point-in-time snapshot of cache utilisation.
-        /// The three volatile fields are read in separate operations, so the snapshot may not be
-        /// perfectly consistent under concurrent writes; this is acceptable for diagnostic purposes.
+        /// Returns a snapshot of cache utilisation.
+        /// Must be called under the caller's write lock for a consistent read across the three dictionaries.
         /// </summary>
         /// <returns>
         /// A <see cref="MappingStatistics"/> value containing the number of cached mapping delegates,
@@ -185,10 +184,9 @@ namespace PropertyMapper.Core
             FrozenDictionary<TypePairKey, object> delegates = _delegates;
             FrozenDictionary<TypePairKey, object> intoDelegates = _intoDelegates;
 
-            // Rough estimate of memory usage
-            long memory = plans.Count * 128; // Plan overhead
-            memory += delegates.Count * 64; // Delegate overhead
-            memory += intoDelegates.Count * 64; // In-place delegate overhead
+            // Rough per-entry estimates: MappingPlan ~128 B (bindings array + metadata),
+            // compiled delegate ~64 B (Func/Action wrapper + IL method stub reference).
+            long memory = (plans.Count * 128L) + ((delegates.Count + intoDelegates.Count) * 64L);
 
             return new MappingStatistics(
                 CachedMappers: delegates.Count + intoDelegates.Count,

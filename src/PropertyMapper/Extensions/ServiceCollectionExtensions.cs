@@ -73,9 +73,13 @@ namespace PropertyMapper.Extensions
             // Auto-register warmup service when WarmupOnStartup<TIn,TOut>() calls were made on the builder.
             if (builder.WarmupPairs.Count > 0)
             {
-                Type[] typePairs = builder.WarmupPairs
-                    .SelectMany(static p => new[] { p.Source, p.Target })
-                    .ToArray();
+                IReadOnlyList<(Type Source, Type Target)> pairs = builder.WarmupPairs;
+                Type[] typePairs = new Type[pairs.Count * 2];
+                for (int i = 0; i < pairs.Count; i++)
+                {
+                    typePairs[i * 2] = pairs[i].Source;
+                    typePairs[i * 2 + 1] = pairs[i].Target;
+                }
                 services.AddHostedService(sp => new PropMapWarmupService(sp.GetRequiredService<IPropMap>(), typePairs));
             }
 

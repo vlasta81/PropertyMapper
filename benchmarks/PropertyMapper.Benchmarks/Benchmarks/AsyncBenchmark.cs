@@ -20,6 +20,11 @@ namespace PropertyMapper.Benchmarks.Benchmarks;
 /// <item><b>MapParallelAsync</b> — <c>MapParallelAsync&lt;TIn,TOut&gt;</c>: indexed parallel
 /// writes via <c>Parallel.ForAsync</c> + <c>AsyncMappingWorker</c> struct
 /// (zero-allocation hot path).</item>
+/// <item><b>MapStreamAsync_Collect</b> — <c>MapStreamAsync&lt;TIn,TOut&gt;</c>: streams items
+/// one by one from an <see cref="IAsyncEnumerable{T}"/> source and collects them into a list.</item>
+/// <item><b>MapStreamBatchedAsync_Collect</b> — <c>MapStreamBatchedAsync&lt;TIn,TOut&gt;</c>:
+/// streams pre-sized batches from an <see cref="IAsyncEnumerable{T}"/> source with
+/// <c>batchSize=10</c>; shows per-batch amortisation overhead.</item>
 /// </list>
 /// <para>
 /// Cross-over point: for small N, <c>MapAsync_Sequential</c> wins because thread-dispatch
@@ -155,4 +160,47 @@ public class AsyncBenchmark
     [Benchmark]
     public async Task<List<WideTarget>> MapParallelAsync()
         => await _mapper.MapParallelAsync<WideSource, WideTarget>(_data).ConfigureAwait(false);
+
+    /// <summary>
+    /// Streaming mapping from an <see cref="IAsyncEnumerable{T}"/> source, collecting all
+    /// results into a list.
+    /// Each item is mapped individually as it arrives from the async source —
+    /// no pre-sizing is possible, so allocation is higher than the <c>Task.Run</c> path.
+    /// </summary>
+    [Benchmark]
+    public async Task<List<WideTarget>> MapStreamAsync_Collect()
+    {
+        List<WideTarget> result = new List<WideTarget>(_data.Count);
+        await foreach (WideTarget item in _mapper.MapStreamAsync<WideSource, WideTarget>(GenerateAsync()).ConfigureAwait(false))
+            result.Add(item);
+        return result;
+    }
+
+    /// <summary>
+    /// Batched streaming from an <see cref="IAsyncEnumerable{T}"/> source with
+    /// <c>batchSize = 10</c>.
+    /// Each yielded <see cref="List{T}"/> batch is pre-sized; the trailing flush
+    /// emits a partial batch when <c>N % batchSize != 0</c>.
+    /// Compare with <see cref="MapStreamAsync_Collect"/> to quantify the per-batch
+    /// amortisation benefit.
+    /// </summary>
+    [Benchmark]
+    public async Task<List<WideTarget>> MapStreamBatchedAsync_Collect()
+    {
+        List<WideTarget> result = new List<WideTarget>(_data.Count);
+        await foreach (List<WideTarget> batch in _mapper.MapStreamBatchedAsync<WideSource, WideTarget>(GenerateAsync(), batchSize: 10).ConfigureAwait(false))
+            result.AddRange(batch);
+        return result;
+    }
+
+    // Yields the pre-built _data list as an IAsyncEnumerable so that MapStreamAsync /
+    // MapStreamBatchedAsync have a realistic async source without artificial Task.Delay overhead.
+    private async IAsyncEnumerable<WideSource> GenerateAsync()
+    {
+        foreach (WideSource item in _data)
+        {
+            await Task.Yield();
+            yield return item;
+        }
+    }
 }

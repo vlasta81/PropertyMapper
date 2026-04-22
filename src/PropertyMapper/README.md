@@ -42,7 +42,8 @@ OrderDto dto = await mapper.MapAsync<Order, OrderDto>(order, cancellationToken);
 | **Operator conversions** | Respects `implicit`/`explicit` operators |
 | **Rich collections** | `List<T>`, `T[]`, `ImmutableArray<T>`, `ImmutableList<T>`, `HashSet<T>`, `FrozenDictionary<K,V>`, nested lists |
 | **Async & parallel** | `MapAsync`, `MapParallelAsync`, `MapStreamAsync`, `MapStreamBatchedAsync` |
-| **Fluent configuration** | `PropMapBuilder` with `Ignore`, `MapFrom`, `AfterMap`, `ReverseMap` per type-pair |
+| **Context-aware mapping** | `MapWithContext<TCtx>` — per-call context passed to registered setters; never compiled into the cached delegate |
+| **Fluent configuration** |
 | **FieldMask / Projection** | `MapThenApplyMask`, `Project<TIn,TOut>` for EF Core / `IQueryable` |
 | **Dependency Injection** | `AddPropertyMapper()` extension for `IServiceCollection` |
 | **Diagnostics** | `Validate<TIn,TOut>()`, `GetStatistics()`, `Warmup`, `WarmupBatch` |
@@ -102,6 +103,7 @@ public class OrderService(IPropMap mapper) { }
 | Simple object | **13.5 ns** | 58.3 ns | 16.3 ns |
 | Nested object | **40.4 ns** | 89.2 ns | 43.7 ns |
 | Struct (zero-alloc) | **7.2 ns** | 54.7 ns | 7.4 ns |
+| MapWithContext (1 setter) | **17.4 ns** | — | — |
 | First call (cold path) | **278 μs** | 927 μs | 2,028 μs |
 | Collection N=1 000 | **~31 μs** | ~35 μs | ~31 μs |
 

@@ -184,13 +184,14 @@ Measured with BenchmarkDotNet v0.15.8, .NET 10, Intel i5-7600K, Server GC.
 
 | Scenario | PropertyMapper | AutoMapper | Mapster |
 |----------|:-------------:|:---------:|:------:|
-| Simple object (hot) | **13.5 ns** | 58.3 ns | 16.3 ns |
-| Nested object (hot) | **40.4 ns** | 89.2 ns | 43.7 ns |
-| Struct (zero-alloc) | **7.2 ns** | 54.7 ns | 7.4 ns |
-| Record | **17.0 ns** | 60.4 ns | 21.9 ns |
-| Wide object (10 props) | **30.4 ns** | 80.9 ns | 32.7 ns |
-| First call (cold path) | **278 μs** | 927 μs | 2,028 μs |
-| Collection N=1 000 | **~31 μs** | ~35 μs | ~31 μs |
+| Simple object (hot) | **12.8 ns** | 60.0 ns | 15.6 ns |
+| Nested object (hot) | **42.8 ns** | 85.9 ns | — |
+| Struct (zero-alloc) | **7.5 ns** | 54.8 ns | 7.3 ns |
+| Record | **15.9 ns** | 58.9 ns | 20.1 ns |
+| Wide object (10 props) | **27.9 ns** | 76.0 ns | — |
+| MapWithContext (1 setter) | **80 ns** | — | — |
+| First call (cold path) | **253 μs** | 849 μs | 1,679 μs |
+| Collection N=1 000 | **~28–29 μs** | ~31 μs | ~28 μs |
 
 → Full results: [benchmarks/PropertyMapper.Benchmarks/README.md](benchmarks/PropertyMapper.Benchmarks/README.md)
 
@@ -205,7 +206,7 @@ Measured with BenchmarkDotNet v0.15.8, .NET 10, Intel i5-7600K, Server GC.
 | [Advanced Features](docs/advanced.md) | FieldMask, Projection, Clone, MapMerge, MapWithContext |
 | [API Reference](docs/api/index.md) | Auto-generated XML doc reference |
 | [Benchmarks](benchmarks/PropertyMapper.Benchmarks/README.md) | BenchmarkDotNet results vs AutoMapper & Mapster |
-| [Tests](tests/PropertyMapper.Tests/README.md) | Test suite overview (282 tests) |
+| [Tests](tests/PropertyMapper.Tests/README.md) | Test suite overview (286 tests) |
 
 ## License
 

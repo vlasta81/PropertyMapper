@@ -28,7 +28,7 @@ namespace PropertyMapper
         public void Warmup<TIn, TOut>() where TOut : new() => GetOrCompileMapper<TIn, TOut>();
 
         /// <summary>
-        /// Pre-compiles mapping delegates for multiple type pairs concurrently.
+        /// Pre-compiles mapping delegates for multiple type pairs in a single sequential pass.
         /// Useful at application startup to eliminate first-call overhead for all known type pairs at once.
         /// </summary>
         /// <param name="typePairs">
@@ -72,10 +72,17 @@ namespace PropertyMapper
         }
 
         /// <summary>
-        /// Returns a point-in-time snapshot of this mapper's cache utilisation.
+        /// Returns a consistent point-in-time snapshot of this mapper's cache utilisation.
+        /// Acquires the compile lock to ensure the three cache dictionaries are read atomically.
         /// </summary>
         /// <returns>A <see cref="MappingStatistics"/> value with counts of cached delegates, plans, and a memory estimate.</returns>
-        public MappingStatistics GetStatistics() => _cache.GetStatistics();
+        public MappingStatistics GetStatistics()
+        {
+            lock (_compileLock)
+            {
+                return _cache.GetStatistics();
+            }
+        }
 
         /// <summary>
         /// Compiles the <typeparamref name="TIn"/>→<typeparamref name="TOut"/> mapping delegate,

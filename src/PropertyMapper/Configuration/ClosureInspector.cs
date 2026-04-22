@@ -39,14 +39,25 @@ namespace PropertyMapper.Configuration
         }
 
         /// <summary>
+        /// Returns <see langword="true"/> when <paramref name="contextType"/> is or implements
+        /// <see cref="IServiceProvider"/> or <see cref="IServiceScopeFactory"/> — types that must
+        /// never be used as a mapping context because they expose the root DI container.
+        /// </summary>
+        /// <param name="contextType">The CLR type to test.</param>
+        internal static bool IsForbiddenContextType(Type contextType) =>
+            typeof(IServiceProvider).IsAssignableFrom(contextType) ||
+            typeof(IServiceScopeFactory).IsAssignableFrom(contextType);
+
+        /// <summary>
         /// Guards against <typeparamref name="TCtx"/> being <see cref="IServiceProvider"/> or
         /// <see cref="IServiceScopeFactory"/>, which are root-container singletons and must never
         /// flow through the per-call context parameter.
         /// </summary>
+        /// <typeparam name="TCtx">The context type to validate; must not be or implement <see cref="IServiceProvider"/> or <see cref="IServiceScopeFactory"/>.</typeparam>
         /// <exception cref="InvalidOperationException">Thrown when <typeparamref name="TCtx"/> is or implements a forbidden DI container type.</exception>
         internal static void GuardAgainstSingletonContext<TCtx>()
         {
-            if (typeof(IServiceProvider).IsAssignableFrom(typeof(TCtx)) || typeof(IServiceScopeFactory).IsAssignableFrom(typeof(TCtx)))
+            if (IsForbiddenContextType(typeof(TCtx)))
                 throw new InvalidOperationException(
                     $"'{typeof(TCtx).Name}' must not be used as a MapFromWithContext context type. " +
                     "IServiceProvider and IServiceScopeFactory are root-container singletons: " +
@@ -69,7 +80,7 @@ namespace PropertyMapper.Configuration
             // Name-based heuristics for common ASP.NET Core / EF Core types.
             // We cannot take a hard reference to those assemblies from this library.
             string name = t.Name;
-            return name is "HttpContext" or "IHttpContextAccessor" or "ClaimsPrincipal" or "HttpRequest" or "HttpResponse" || name.EndsWith("DbContext");
+            return name is "HttpContext" or "IHttpContextAccessor" or "ClaimsPrincipal" or "HttpRequest" or "HttpResponse" || name.EndsWith("DbContext", StringComparison.Ordinal);
         }
     }
 }

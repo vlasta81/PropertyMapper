@@ -102,6 +102,28 @@ public class AsyncMappingTests
             await _mapper.MapAsync<AsyncSource, AsyncTarget>(source, cts.Token));
     }
 
+    /// <summary>
+    /// Verifies that <c>cancellationToken.ThrowIfCancellationRequested()</c> inside the foreach loop
+    /// causes <see cref="OperationCanceledException"/> when the token is cancelled after
+    /// the work item has already started executing (mid-loop cancellation).
+    /// </summary>
+    [Fact]
+    public async Task MapAsync_Collection_CancellationMidLoop_ThrowsOperationCanceledException()
+    {
+        // Arrange — large list so the loop is still running when we cancel
+        using CancellationTokenSource cts = new CancellationTokenSource();
+        IEnumerable<AsyncSource> sources = Enumerable.Range(1, 100_000)
+            .Select(i => new AsyncSource { Id = i, Name = $"Item {i}" });
+
+        Task<List<AsyncTarget>> task = _mapper.MapAsync<AsyncSource, AsyncTarget>(sources, cts.Token);
+
+        // Cancel while Task.Run body is still iterating
+        await cts.CancelAsync();
+
+        // Act & Assert
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(async () => await task);
+    }
+
     [Fact]
     public async Task MapAsync_Collection_NullSource_Throws()
     {

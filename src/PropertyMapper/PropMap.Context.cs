@@ -1,4 +1,3 @@
-using Microsoft.Extensions.DependencyInjection;
 using PropertyMapper.Configuration;
 using PropertyMapper.Core;
 
@@ -31,11 +30,11 @@ namespace PropertyMapper
         /// <param name="context">Per-call context passed to all registered context-aware setters.</param>
         /// <returns>A new <typeparamref name="TOut"/> with all matched properties and context-derived values applied.</returns>
         /// <exception cref="ArgumentNullException">When <paramref name="source"/> is <see langword="null"/>.</exception>
-        /// <exception cref="ArgumentException">When <paramref name="context"/> is an <see cref="IServiceProvider"/> or <c>IServiceScopeFactory</c>.</exception>
+        /// <exception cref="ArgumentException">When <paramref name="context"/> is an <see cref="IServiceProvider"/> or <see cref="Microsoft.Extensions.DependencyInjection.IServiceScopeFactory"/>.</exception>
         public TOut MapWithContext<TIn, TOut, TCtx>(TIn source, TCtx context) where TOut : new()
         {
             ArgumentNullException.ThrowIfNull(source);
-            if (context is IServiceProvider || context is IServiceScopeFactory)
+            if (ClosureInspector.IsForbiddenContextType(typeof(TCtx)))
                 throw new ArgumentException(
                     "IServiceProvider and IServiceScopeFactory must not be passed as a MapWithContext context. " +
                     "Resolve the required values before calling MapWithContext and pass a " +
